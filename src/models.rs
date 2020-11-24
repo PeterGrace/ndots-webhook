@@ -43,13 +43,13 @@ struct AdmissionRequest {
     user_info: UserInfo,
     /// object is the object from the incoming request.
     #[serde(rename = "object", skip_serializing_if = "Option::is_none")]
-    object: RawExtension,
+    object: Option<RawExtension>,
     /// old_object is the existing object, only populated during DELETE or UPDATE requests.
     #[serde(rename = "oldObject", skip_serializing_if = "Option::is_none")]
-    old_object: RawExtension,
+    old_object: Option<RawExtension>,
     /// dry_run indicates whether the modifications will be persisted for the object.  default false.
     #[serde(rename = "dryRun", skip_serializing_if = "Option::is_none")]
-    dry_run: bool,
+    dry_run: Option<bool>,
     /// options is the operation options structure of the operation being performed.
     #[serde(rename = "options", skip_serializing_if = "Option::is_none")]
     options: Option<RawExtension>
@@ -61,4 +61,20 @@ struct AdmissionResponse {
 }
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 struct UID {
+}
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+struct RawExtension {
+}
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+struct GroupVersionKind {
+}
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+struct GroupVersionResource {
+}
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+struct Operation {
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+struct UserInfo {
 }
