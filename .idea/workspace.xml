@@ -22,9 +22,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8cd47e12-827d-4139-be06-632027000b05" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/tests/admission-review.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tests/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tests/test_serde.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/models.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,10 +62,16 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="org.rust.cargo.project.model.PROJECT_DISCOVERY" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Cargo.Test">
     <configuration name="Run" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
       <option name="channel" value="DEFAULT" />
       <option name="command" value="run --package ndots-webhook --bin ndots-webhook" />
@@ -76,6 +84,27 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Test" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
+      <option name="channel" value="DEFAULT" />
+      <option name="command" value="test" />
+      <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Cargo.Run" />
+      <item itemvalue="Cargo.Test" />
+    </list>
   </component>
   <component name="RustProjectSettings">
     <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
@@ -91,7 +120,7 @@
       <updated>1606139110016</updated>
       <workItem from="1606139113850" duration="1303000" />
       <workItem from="1606222572624" duration="1761000" />
-      <workItem from="1606228265746" duration="954000" />
+      <workItem from="1606228265746" duration="3720000" />
     </task>
     <servers />
   </component>
@@ -111,25 +140,29 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1874" height="277" key="GridCell.Tab.0.bottom" timestamp="1606229217429">
+    <state x="2344" y="204" width="1071" height="678" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606229541931">
+      <screen x="0" y="0" width="5760" height="2160" />
+    </state>
+    <state x="2344" y="204" width="1071" height="678" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.5760.2160@0.0.5760.2160" timestamp="1606229541931" />
+    <state width="1874" height="277" key="GridCell.Tab.0.bottom" timestamp="1606230517494">
       <screen x="0" y="0" width="5760" height="2160" />
     </state>
     <state width="912" height="275" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1606224334535" />
-    <state width="1874" height="277" key="GridCell.Tab.0.bottom/0.0.5760.2160@0.0.5760.2160" timestamp="1606229217429" />
-    <state width="1874" height="277" key="GridCell.Tab.0.center" timestamp="1606229217428">
+    <state width="1874" height="277" key="GridCell.Tab.0.bottom/0.0.5760.2160@0.0.5760.2160" timestamp="1606230517494" />
+    <state width="1874" height="277" key="GridCell.Tab.0.center" timestamp="1606230517492">
       <screen x="0" y="0" width="5760" height="2160" />
     </state>
     <state width="912" height="275" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1606224334534" />
-    <state width="1874" height="277" key="GridCell.Tab.0.center/0.0.5760.2160@0.0.5760.2160" timestamp="1606229217428" />
-    <state width="1874" height="277" key="GridCell.Tab.0.left" timestamp="1606229217427">
+    <state width="1874" height="277" key="GridCell.Tab.0.center/0.0.5760.2160@0.0.5760.2160" timestamp="1606230517492" />
+    <state width="1874" height="277" key="GridCell.Tab.0.left" timestamp="1606230517492">
       <screen x="0" y="0" width="5760" height="2160" />
     </state>
     <state width="912" height="275" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1606224334533" />
-    <state width="1874" height="277" key="GridCell.Tab.0.left/0.0.5760.2160@0.0.5760.2160" timestamp="1606229217427" />
-    <state width="1874" height="277" key="GridCell.Tab.0.right" timestamp="1606229217429">
+    <state width="1874" height="277" key="GridCell.Tab.0.left/0.0.5760.2160@0.0.5760.2160" timestamp="1606230517492" />
+    <state width="1874" height="277" key="GridCell.Tab.0.right" timestamp="1606230517493">
       <screen x="0" y="0" width="5760" height="2160" />
     </state>
     <state width="912" height="275" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1606224334534" />
-    <state width="1874" height="277" key="GridCell.Tab.0.right/0.0.5760.2160@0.0.5760.2160" timestamp="1606229217429" />
+    <state width="1874" height="277" key="GridCell.Tab.0.right/0.0.5760.2160@0.0.5760.2160" timestamp="1606230517493" />
   </component>
 </project>
