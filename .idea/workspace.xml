@@ -23,6 +23,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8cd47e12-827d-4139-be06-632027000b05" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/models.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,11 +64,6 @@
     <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Run" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
       <option name="channel" value="DEFAULT" />
       <option name="command" value="run --package ndots-webhook --bin ndots-webhook" />
@@ -93,7 +90,8 @@
       <option name="presentableId" value="Default" />
       <updated>1606139110016</updated>
       <workItem from="1606139113850" duration="1303000" />
-      <workItem from="1606222572624" duration="1278000" />
+      <workItem from="1606222572624" duration="1761000" />
+      <workItem from="1606228265746" duration="954000" />
     </task>
     <servers />
   </component>
@@ -113,21 +111,25 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1874" height="275" key="GridCell.Tab.0.bottom" timestamp="1606223848149">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1874" height="277" key="GridCell.Tab.0.bottom" timestamp="1606229217429">
+      <screen x="0" y="0" width="5760" height="2160" />
     </state>
-    <state width="1874" height="275" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1606223848149" />
-    <state width="1874" height="275" key="GridCell.Tab.0.center" timestamp="1606223848148">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="912" height="275" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1606224334535" />
+    <state width="1874" height="277" key="GridCell.Tab.0.bottom/0.0.5760.2160@0.0.5760.2160" timestamp="1606229217429" />
+    <state width="1874" height="277" key="GridCell.Tab.0.center" timestamp="1606229217428">
+      <screen x="0" y="0" width="5760" height="2160" />
     </state>
-    <state width="1874" height="275" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1606223848148" />
-    <state width="1874" height="275" key="GridCell.Tab.0.left" timestamp="1606223848148">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="912" height="275" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1606224334534" />
+    <state width="1874" height="277" key="GridCell.Tab.0.center/0.0.5760.2160@0.0.5760.2160" timestamp="1606229217428" />
+    <state width="1874" height="277" key="GridCell.Tab.0.left" timestamp="1606229217427">
+      <screen x="0" y="0" width="5760" height="2160" />
     </state>
-    <state width="1874" height="275" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1606223848148" />
-    <state width="1874" height="275" key="GridCell.Tab.0.right" timestamp="1606223848149">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="912" height="275" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1606224334533" />
+    <state width="1874" height="277" key="GridCell.Tab.0.left/0.0.5760.2160@0.0.5760.2160" timestamp="1606229217427" />
+    <state width="1874" height="277" key="GridCell.Tab.0.right" timestamp="1606229217429">
+      <screen x="0" y="0" width="5760" height="2160" />
     </state>
-    <state width="1874" height="275" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1606223848149" />
+    <state width="912" height="275" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1606224334534" />
+    <state width="1874" height="277" key="GridCell.Tab.0.right/0.0.5760.2160@0.0.5760.2160" timestamp="1606229217429" />
   </component>
 </project>

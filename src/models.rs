@@ -1,5 +1,6 @@
 use serde::{Serialize, Deserialize};
 use serde_json::{Map, Value};
+use strum_macros::EnumString;
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 struct AdmissionReview {
@@ -16,7 +17,7 @@ struct AdmissionReview {
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 struct AdmissionRequest {
     /// uid is an identifier for the individual request/response
-    uid: UID,
+    uid: String,
     /// kind is the kind of the object
     kind: GroupVersionKind,
     /// resource is the fully-qualified resource being requested
@@ -58,23 +59,81 @@ struct AdmissionRequest {
 }
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 struct AdmissionResponse {
-}
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
-struct UID {
+    /// uid is an identifier for the individual response
+    uid: String,
+    /// allowed indicates whether or not the admission request was permitted
+    allowed: bool,
+    /// result contains extra details into why an admission request was denied.
+    #[serde(rename = "status", skip_serializing_if = "Option::is_none")]
+    result: Option<Status>,
+    /// patch is the jsonpatch (RFC6902) for the object
+    #[serde(rename = "patch", skip_serializing_if = "Option::is_none")]
+    patch: Option<Vec<u8>>,
+    /// patch_type is the type of patch.  Currently, only JSONPatch can be used.
+    #[serde(rename = "patchType", skip_serializing_if = "Option::is_none")]
+    patch_type: Option<PatchType>,
+    /// audit_annotations is a structured key-value map set by the remote admission controller
+    #[serde(rename = "auditAnnotations", skip_serializing_if = "Option::is_none")]
+    audit_annotations: Option<Map<String, Value>>,
+    /// warnings is a list of warning messages to return to the api client
+    #[serde(rename = "warnings", skip_serializing_if = "Option::is_none")]
+    warnings: Option<Vec<String>>
+
+
 }
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 struct RawExtension {
 }
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 struct GroupVersionKind {
+    /// group is the api group of the kind
+    group: String,
+    /// version is the version value assigned to this kind
+    version: String,
+    /// kind is the kubernetes object-kind
+    kind: String
 }
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 struct GroupVersionResource {
+    /// group is the api group of the resource
+    group: String,
+    /// version is the version value assigned to this resource
+    version: String,
+    /// resource is the name of the resource
+    resource: String
 }
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
-struct Operation {
+#[derive(Debug, PartialEq, Serialize, Deserialize, EnumString)]
+enum Operation {
+    CREATE,
+    UPDATE,
+    DELETE,
+    CONNECT
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 struct UserInfo {
+}
+
+#[derive(Debug, PartialEq, EnumString, Serialize, Deserialize)]
+enum PatchType {
+    #[serde(rename="JSONPatch")]
+    JSONPatch
+}
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+struct Status {
+    /// status is a string that describes the status
+    #[serde(rename = "status", skip_serializing_if = "Option::is_none")]
+    status: Option<String>,
+    /// message is a human-readable description of the operation failed
+    #[serde(rename = "message", skip_serializing_if = "Option::is_none")]
+    message: Option<String>,
+    /// reason is a machine-readable description of the failure scenario
+    #[serde(rename = "reason", skip_serializing_if = "Option::is_none")]
+    reason: Option<String>,
+    /// details is extended data associated with the reason
+    #[serde(rename = "details", skip_serializing_if = "Option::is_none")]
+    details: Option<String>,
+    /// code is the suggested http return code
+    #[serde(rename = "code", skip_serializing_if = "Option::is_none")]
+    code: Option<String>,
 }
