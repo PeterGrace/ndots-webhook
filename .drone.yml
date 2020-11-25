@@ -1,5 +1,17 @@
 ---
 kind: secret
+name: AWS_ACCESS_KEY_ID
+get:
+  path: kv/data/minio
+  name: AWS_ACCESS_KEY_ID
+---
+kind: secret
+name: AWS_SECRET_ACCESS_KEY
+get:
+  path: kv/data/minio
+  name: AWS_SECRET_ACCESS_KEY
+---
+kind: secret
 name: docker_username
 get:
   path: kv/data/dreg
@@ -21,23 +33,26 @@ dns_config:
       value: 1
 
 steps:
-  - name: echo secrets
-    image: alpine
-    environment:
-      CONTROL: control
-      USERNAME:
-        from_secret: docker_username
-      PASSWORD:
-        from_secret: docker_password
-    commands:
-      - echo "$${CONTROL}:$${USERNAME} and $${PASSWORD}"
-
   - name: build
     image: plugins/docker
     service_account: drone-runner
+    environment:
+      SCCACHE_ENDPOINT: "https://s3.vsix.me:9000"
+      SCCACHE_BUCKET: "sccache"
+      SCCACHE_S3_USE_SSL: "true"
+      AWS_ACCESS_KEY_ID:
+        from_secret: AWS_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY:
+        from_secret: AWS_SECRET_ACCESS_KEY
     settings:
       repo: dreg.vsix.me:9443/ndots-webhook
       registry: dreg.vsix.me:9443
+      build_args_from_env: 
+        - SCCACHE_ENDPOINT
+        - SCCACHE_BUCKET
+        - SCCACHE_S3_USE_SSL
+        - AWS_ACCESS_KEY_ID
+        - AWS_SECRET_ACCESS_KEY
       auto_tag: true
       username: 
         from_secret: docker_username
