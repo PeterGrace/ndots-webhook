@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use serde_json::{Map, Value};
 use strum_macros::EnumString;
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Serialize, Deserialize,Default)]
 pub struct AdmissionReview {
     /// request is the incoming AdmissionRequest object
     #[serde(rename = "request", skip_serializing_if = "Option::is_none")]
@@ -12,7 +12,7 @@ pub struct AdmissionReview {
     pub response: Option<AdmissionResponse>
 
 }
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Serialize, Deserialize, Default)]
 pub struct AdmissionRequest {
     /// uid is an identifier for the individual request/response
     pub uid: String,
@@ -39,23 +39,23 @@ pub struct AdmissionRequest {
     pub operation: Operation,
     /// user_info is information about the requesting user
     #[serde(rename = "userInfo")]
-    pub user_info: UserInfo,
+    pub user_info: Map<String, Value>,
     /// object is the object from the incoming request.
     #[serde(rename = "object", skip_serializing_if = "Option::is_none")]
-    pub object: Option<RawExtension>,
+    pub object: Option<Map<String, Value>>,
     /// old_object is the existing object, only populated during DELETE or UPDATE requests.
     #[serde(rename = "oldObject", skip_serializing_if = "Option::is_none")]
-    pub old_object: Option<RawExtension>,
+    pub old_object: Option<Map<String, Value>>,
     /// dry_run indicates whether the modifications will be persisted for the object.  default false.
     #[serde(rename = "dryRun", skip_serializing_if = "Option::is_none")]
     pub dry_run: Option<bool>,
     /// options is the operation options structure of the operation being performed.
     #[serde(rename = "options", skip_serializing_if = "Option::is_none")]
-    pub options: Option<RawExtension>
+    pub options: Option<Map<String, Value>>
 
 
 }
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Serialize, Deserialize, Default)]
 pub struct AdmissionResponse {
     /// uid is an identifier for the individual response
     pub uid: String,
@@ -79,11 +79,7 @@ pub struct AdmissionResponse {
 
 
 }
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
-struct RawExtension {
-    // TODO: implement
-}
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Serialize, Deserialize, Default)]
 pub struct GroupVersionKind {
     /// group is the api group of the kind
     pub group: String,
@@ -92,7 +88,7 @@ pub struct GroupVersionKind {
     /// kind is the kubernetes object-kind
     pub kind: String
 }
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Serialize, Deserialize, Default)]
 pub struct GroupVersionResource {
     /// group is the api group of the resource
     pub group: String,
@@ -109,16 +105,21 @@ pub enum Operation {
     CONNECT
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
-pub struct UserInfo {
+impl Default for Operation {
+    fn default() -> Self { Operation::UPDATE}
 }
+
 
 #[derive(Debug, PartialEq, EnumString, Serialize, Deserialize)]
 pub enum PatchType {
     #[serde(rename="JSONPatch")]
     JSONPatch
 }
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+impl Default for PatchType {
+    fn default() -> Self { PatchType::JSONPatch }
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize, Default)]
 pub struct Status {
     /// status is a string that describes the status
     #[serde(rename = "status", skip_serializing_if = "Option::is_none")]
