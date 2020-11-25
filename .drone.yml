@@ -1,0 +1,46 @@
+---
+kind: secret
+name: docker_username
+get:
+  path: kv/data/dreg
+  name: username
+---
+kind: secret
+name: docker_password
+get:
+  path: kv/data/dreg
+  name: password
+---
+kind: pipeline
+type: kubernetes
+name: test-container
+
+dns_config:
+  options:
+    - name: ndots
+      value: 1
+
+steps:
+  - name: echo secrets
+    image: alpine
+    environment:
+      CONTROL: control
+      USERNAME:
+        from_secret: docker_username
+      PASSWORD:
+        from_secret: docker_password
+    commands:
+      - echo "$${CONTROL}:$${USERNAME} and $${PASSWORD}"
+
+  - name: build
+    image: plugins/docker
+    service_account: drone-runner
+    settings:
+      repo: dreg.vsix.me:9443/ndots-webhook
+      registry: dreg.vsix.me:9443
+      auto_tag: true
+      username: 
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+
