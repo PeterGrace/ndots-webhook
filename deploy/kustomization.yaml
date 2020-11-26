@@ -6,3 +6,4 @@ resources:
 - deployment.yaml
 - sa.yaml
 - psp.yaml
+- service.yaml
