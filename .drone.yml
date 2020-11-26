@@ -37,7 +37,7 @@ steps:
     image: plugins/docker
     service_account: drone-runner
     environment:
-      SCCACHE_ENDPOINT: "https://s3.vsix.me:9000"
+      SCCACHE_ENDPOINT: "s3.vsix.me:9000"
       SCCACHE_BUCKET: "sccache"
       SCCACHE_S3_USE_SSL: "true"
       AWS_ACCESS_KEY_ID:
