@@ -17,8 +17,8 @@ validate_prod() {
 
 if [[ ! -z "$DEBUG" ]]
 then
-	echo "debug requested, sleeping infinity"
-	/bin/sleep infnity
+	echo "debug requested, sleeping 86400"
+	/bin/sleep 86400
 	exit 1
 fi
 
