@@ -28,7 +28,6 @@ RUN chown 1000:1000 /ndots-webhook
 USER 1000
 WORKDIR /ndots-webhook
 COPY --from=build /home/app/target/release/ndots-webhook /ndots-webhook/ndots-webhook
-COPY Rocket.toml /ndots-webhook/Rocket.toml
 COPY entrypoint.sh /ndots-webhook/entrypoint.sh
 
 CMD ["/ndots-webhook/entrypoint.sh"]
