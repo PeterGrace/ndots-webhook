@@ -15,6 +15,14 @@ validate_prod() {
 	export ROCKET_GLOBAL_TLS_KEY="${SSL_PATH}/key.pem"
 }
 
+if [[ ! -z "$DEBUG" ]]
+then
+	echo "debug requested, sleeping infinity"
+	/bin/sleep infnity
+	exit 1
+fi
+
+
 if [[ -z "$ROCKET_ENV" ]]
 then
 	echo "ROCKET_ENV isn't set.  Assuming development settings."

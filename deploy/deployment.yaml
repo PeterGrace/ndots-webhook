@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ndots-webhook
+  name: ndots-webhook
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ndots-webhook
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: ndots-webhook
+    spec:
+      serviceAccountName: ndots-webhook
+      containers:
+      - image: dreg.vsix.me:9443/ndots-webhook:latest
+        name: ndots-webhook
+        env:
+          - name: ROCKET_ENV
+            value: "production"
+          - name: SSL_PATH
+            value: "/ssl"
+        volumeMounts:
+          - name: certs
+            mountPath: /ssl
+      volumes:
+        - name: certs
+          secret:
+            secretName: ndots-webhook
