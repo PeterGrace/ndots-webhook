@@ -1,0 +1,13 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  creationTimestamp: null
+  name: psp.ndots-webhook
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: psp.readwritefs
+subjects:
+- kind: ServiceAccount
+  name: ndots-webhook
+  namespace: ndots-webhook

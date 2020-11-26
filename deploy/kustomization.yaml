@@ -5,3 +5,4 @@ resources:
 - ns.yaml
 - deployment.yaml
 - sa.yaml
+- psp.yaml

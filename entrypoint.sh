@@ -11,8 +11,8 @@ validate_prod() {
 		echo "you must specify the path to cert.pem and key.pem for production mode."
 		exit 1
 	fi
-	export ROCKET_GLOBAL_TLS_CERTS="${SSL_PATH}/cert.pem"
-	export ROCKET_GLOBAL_TLS_KEY="${SSL_PATH}/key.pem"
+	export ROCKET_TLS="{certs=\"${SSL_PATH}/cert.pem\",key=\"${SSL_PATH}/key.pem\"}"
+
 }
 
 if [[ ! -z "$DEBUG" ]]
