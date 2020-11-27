@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use serde_json::{Map, Value};
 use strum_macros::EnumString;
 
-#[derive(Debug, PartialEq, Serialize, Deserialize,Default)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize,Default)]
 pub struct AdmissionReview {
     /// request is the incoming AdmissionRequest object
     #[serde(rename = "request", skip_serializing_if = "Option::is_none")]
@@ -12,7 +12,7 @@ pub struct AdmissionReview {
     pub response: Option<AdmissionResponse>
 
 }
-#[derive(Debug, PartialEq, Serialize, Deserialize, Default)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize, Default)]
 pub struct AdmissionRequest {
     /// uid is an identifier for the individual request/response
     pub uid: String,
@@ -55,18 +55,18 @@ pub struct AdmissionRequest {
 
 
 }
-#[derive(Debug, PartialEq, Serialize, Deserialize, Default)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize, Default)]
 pub struct AdmissionResponse {
     /// uid is an identifier for the individual response
     pub uid: String,
     /// allowed indicates whether or not the admission request was permitted
     pub allowed: bool,
-    /// result contains extra details into why an admission request was denied.
+    /// status contains extra details into why an admission request was denied.
     #[serde(rename = "status", skip_serializing_if = "Option::is_none")]
-    pub result: Option<Status>,
+    pub status: Option<Vec<StatusResult>>,
     /// patch is the jsonpatch (RFC6902) for the object
     #[serde(rename = "patch", skip_serializing_if = "Option::is_none")]
-    pub patch: Option<Vec<u8>>,
+    pub patch: Option<String>,
     /// patch_type is the type of patch.  Currently, only JSONPatch can be used.
     #[serde(rename = "patchType", skip_serializing_if = "Option::is_none")]
     pub patch_type: Option<PatchType>,
@@ -75,11 +75,13 @@ pub struct AdmissionResponse {
     pub audit_annotations: Option<Map<String, Value>>,
     /// warnings is a list of warning messages to return to the api client
     #[serde(rename = "warnings", skip_serializing_if = "Option::is_none")]
-    pub warnings: Option<Vec<String>>
+    pub warnings: Option<Vec<String>>,
 
 
 }
-#[derive(Debug, PartialEq, Serialize, Deserialize, Default)]
+
+
+#[derive(Debug, PartialEq, Clone,Serialize, Deserialize, Default)]
 pub struct GroupVersionKind {
     /// group is the api group of the kind
     pub group: String,
@@ -88,7 +90,7 @@ pub struct GroupVersionKind {
     /// kind is the kubernetes object-kind
     pub kind: String
 }
-#[derive(Debug, PartialEq, Serialize, Deserialize, Default)]
+#[derive(Debug, PartialEq, Clone,Serialize, Deserialize, Default)]
 pub struct GroupVersionResource {
     /// group is the api group of the resource
     pub group: String,
@@ -97,7 +99,7 @@ pub struct GroupVersionResource {
     /// resource is the name of the resource
     pub resource: String
 }
-#[derive(Debug, PartialEq, Serialize, Deserialize, EnumString)]
+#[derive(Debug, PartialEq, Clone,Serialize, Deserialize, EnumString)]
 pub enum Operation {
     CREATE,
     UPDATE,
@@ -110,7 +112,7 @@ impl Default for Operation {
 }
 
 
-#[derive(Debug, PartialEq, EnumString, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone,EnumString, Serialize, Deserialize)]
 pub enum PatchType {
     #[serde(rename="JSONPatch")]
     JSONPatch
@@ -119,8 +121,8 @@ impl Default for PatchType {
     fn default() -> Self { PatchType::JSONPatch }
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize, Default)]
-pub struct Status {
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize, Default)]
+pub struct StatusResult {
     /// status is a string that describes the status
     #[serde(rename = "status", skip_serializing_if = "Option::is_none")]
     pub status: Option<String>,
@@ -135,5 +137,5 @@ pub struct Status {
     pub details: Option<String>,
     /// code is the suggested http return code
     #[serde(rename = "code", skip_serializing_if = "Option::is_none")]
-    pub code: Option<String>,
+    pub code: Option<u16>,
 }

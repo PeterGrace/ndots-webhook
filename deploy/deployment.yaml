@@ -14,6 +14,7 @@ spec:
     metadata:
       labels:
         app: ndots-webhook
+        ndots.vsix.me/mutate: skip
     spec:
       serviceAccountName: ndots-webhook
       containers:
@@ -31,6 +32,10 @@ spec:
             value: "production"
           - name: SSL_PATH
             value: "/ssl"
+          - name: RUST_LOG
+            value: "debug"
+          - name: ROCKET_LOG
+            value: "debug"
         volumeMounts:
           - name: certs
             mountPath: /ssl

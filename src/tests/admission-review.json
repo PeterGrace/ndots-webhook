@@ -20,7 +20,7 @@
         "some-key":["some-value1", "some-value2"]
       }
     },
-    "object": {"apiVersion":"autoscaling/v1","kind":"Scale"},
+    "object": {"apiVersion":"autoscaling/v1","kind":"Scale","metadata":{"labels":{},"annotations":{"ndots.vsix.me/ndots":"1"}}},
     "oldObject": {"apiVersion":"autoscaling/v1","kind":"Scale"},
     "options": {"apiVersion":"meta.k8s.io/v1","kind":"UpdateOptions"},
     "dryRun": false
