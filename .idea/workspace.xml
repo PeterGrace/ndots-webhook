@@ -26,8 +26,8 @@
       <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/deploy/deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/deploy/deployment.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deploy/mutating_webhook.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/deploy/mutating_webhook.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests/admission-review.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/admission-review.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +69,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="org.rust.cargo.project.model.PROJECT_DISCOVERY" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.general" />
+    <property name="settings.editor.selected.configurable" value="language.rust.rustfmt" />
   </component>
   <component name="RunManager" selected="Cargo.Run">
     <configuration name="Run" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
@@ -107,7 +107,9 @@
     </list>
   </component>
   <component name="RustProjectSettings">
+    <option name="runRustfmtOnSave" value="true" />
     <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
+    <option name="useRustfmt" value="true" />
     <option name="version" value="2" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -120,7 +122,7 @@
       <updated>1606139110016</updated>
       <workItem from="1606139113850" duration="1303000" />
       <workItem from="1606222572624" duration="1761000" />
-      <workItem from="1606228265746" duration="15173000" />
+      <workItem from="1606228265746" duration="18592000" />
     </task>
     <servers />
   </component>
@@ -144,26 +146,26 @@
       <screen x="0" y="0" width="5760" height="2160" />
     </state>
     <state x="2344" y="204" width="1071" height="678" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.5760.2160@0.0.5760.2160" timestamp="1606229541931" />
-    <state width="1874" height="277" key="GridCell.Tab.0.bottom" timestamp="1606521509702">
+    <state width="1874" height="277" key="GridCell.Tab.0.bottom" timestamp="1606525155222">
       <screen x="0" y="0" width="5760" height="2160" />
     </state>
     <state width="912" height="275" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1606224334535" />
-    <state width="1874" height="277" key="GridCell.Tab.0.bottom/0.0.5760.2160@0.0.5760.2160" timestamp="1606521509702" />
-    <state width="1874" height="277" key="GridCell.Tab.0.center" timestamp="1606521509700">
+    <state width="1874" height="277" key="GridCell.Tab.0.bottom/0.0.5760.2160@0.0.5760.2160" timestamp="1606525155222" />
+    <state width="1874" height="277" key="GridCell.Tab.0.center" timestamp="1606525155220">
       <screen x="0" y="0" width="5760" height="2160" />
     </state>
     <state width="912" height="275" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1606224334534" />
-    <state width="1874" height="277" key="GridCell.Tab.0.center/0.0.5760.2160@0.0.5760.2160" timestamp="1606521509700" />
-    <state width="1874" height="277" key="GridCell.Tab.0.left" timestamp="1606521509700">
+    <state width="1874" height="277" key="GridCell.Tab.0.center/0.0.5760.2160@0.0.5760.2160" timestamp="1606525155220" />
+    <state width="1874" height="277" key="GridCell.Tab.0.left" timestamp="1606525155220">
       <screen x="0" y="0" width="5760" height="2160" />
     </state>
     <state width="912" height="275" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1606224334533" />
-    <state width="1874" height="277" key="GridCell.Tab.0.left/0.0.5760.2160@0.0.5760.2160" timestamp="1606521509700" />
-    <state width="1874" height="277" key="GridCell.Tab.0.right" timestamp="1606521509701">
+    <state width="1874" height="277" key="GridCell.Tab.0.left/0.0.5760.2160@0.0.5760.2160" timestamp="1606525155220" />
+    <state width="1874" height="277" key="GridCell.Tab.0.right" timestamp="1606525155221">
       <screen x="0" y="0" width="5760" height="2160" />
     </state>
     <state width="912" height="275" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1606224334534" />
-    <state width="1874" height="277" key="GridCell.Tab.0.right/0.0.5760.2160@0.0.5760.2160" timestamp="1606521509701" />
+    <state width="1874" height="277" key="GridCell.Tab.0.right/0.0.5760.2160@0.0.5760.2160" timestamp="1606525155221" />
     <state width="1874" height="340" key="GridCell.Tab.1.bottom" timestamp="1606516961326">
       <screen x="0" y="0" width="5760" height="2160" />
     </state>
@@ -180,5 +182,9 @@
       <screen x="0" y="0" width="5760" height="2160" />
     </state>
     <state width="1874" height="340" key="GridCell.Tab.1.right/0.0.5760.2160@0.0.5760.2160" timestamp="1606516961326" />
+    <state x="2381" y="181" key="SettingsEditor" timestamp="1606523553816">
+      <screen x="0" y="0" width="5760" height="2160" />
+    </state>
+    <state x="2381" y="181" key="SettingsEditor/0.0.5760.2160@0.0.5760.2160" timestamp="1606523553816" />
   </component>
 </project>
