@@ -573,6 +573,7 @@ name = "ndots-webhook"
 version = "0.1.0"
 dependencies = [
  "base64 0.13.0",
+ "log 0.4.11",
  "rocket",
  "rocket_contrib",
  "serde",

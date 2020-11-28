@@ -2,6 +2,7 @@
 mod models;
 mod tests;
 
+use log::info;
 use rocket::{post, routes};
 use serde_json::{json, Value};
 use rocket_contrib::json::Json;
@@ -38,14 +39,20 @@ fn mutater(review: Json<AdmissionReview>) -> Json<AdmissionReview> {
     let mut ndots: Option<String> = None;
     match obj_meta.get("annotations") {
         Some(om) => {
+            info!("got annotations");
             match om.get("ndots.vsix.me/ndots") {
                 Some(num) => {
+                    info!("setting ndots to {}", num);
                     ndots = Some(num.to_string());
                 },
-                None => {},
+                None => {
+                    info!("No ndots.vsix.me/ndots annotation found");
+                },
             };
         },
-        None => {},
+        None => {
+            info!("This podspec didn't have any annotations to investigate.");
+        },
     };
     let mut response= AdmissionResponse::default();
     response.uid = req.clone().uid;
@@ -59,6 +66,7 @@ fn mutater(review: Json<AdmissionReview>) -> Json<AdmissionReview> {
     }
     let mut review = AdmissionReview::default();
     review.response = Some(response);
+    info!("Returning a review object that should be well-formed");
     Json(review)
 }
 

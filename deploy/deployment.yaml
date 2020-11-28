@@ -33,9 +33,9 @@ spec:
           - name: SSL_PATH
             value: "/ssl"
           - name: RUST_LOG
-            value: "debug"
+            value: "info"
           - name: ROCKET_LOG
-            value: "debug"
+            value: "info"
         volumeMounts:
           - name: certs
             mountPath: /ssl
