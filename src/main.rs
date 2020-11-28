@@ -60,7 +60,7 @@ fn generate_ndots_patch(object: Map<String, Value>, ndots: String) -> Result<Str
                 "path":"/spec/dnsConfig/options/-",
                 "value":{
                     "name": "ndots",
-                    "value": ndots.parse().unwrap_or(1)
+                    "value": ndots
                 }
             }));
             return Ok(json!(patches).to_string());
@@ -114,7 +114,8 @@ fn mutater(review: Json<AdmissionReview>) -> Json<AdmissionReview> {
             match om.get("ndots.vsix.me/ndots") {
                 Some(num) => {
                     info!("setting ndots to {}", num);
-                    ndots = Some(num.to_string());
+                    let dequoted = num.as_str().unwrap();
+                    ndots = Some(dequoted.to_string());
                 }
                 None => {
                     info!("No ndots.vsix.me/ndots annotation found");
